@@ -20,6 +20,12 @@ form {
   font-size: 1.5em;
 }
 
+@media (max-width: 800px) {
+  .mat-form-field {
+    width: 100%;
+  }
+}
+
 .btn-primary {
   background-color: darkcyan;
   padding: .5em 3em;

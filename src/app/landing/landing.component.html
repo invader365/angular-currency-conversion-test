@@ -31,11 +31,12 @@
         <form [formGroup]="form">
             <div class="row">
                 <div class="input-field col-md-6">
+                  <mat-placeholder><mat-icon>attach_money</mat-icon></mat-placeholder>
                   <mat-form-field>
                     <input id="input"
                            type="text"
                            (input)="updateForm()"
-                           (keypress)="limitCharacters($event)"
+                           (keypress)="limitCharacters($event, input.value)"
                            placeholder="USD"
                            [value]="formatNumbers(input.value)"
                            formControlName="input"
@@ -43,11 +44,12 @@
                            #input>
                   </mat-form-field>
                   <mat-error *ngIf="form.hasError('required')">
-                    Please validate your data <strong>required</strong>
+                    Only <strong>4</strong> decimal characteres allowed
                   </mat-error>
                 </div>
 
                 <div class="input-field col-md-6 text-right">
+                  <mat-placeholder><mat-icon>euro_symbol</mat-icon></mat-placeholder>
                   <mat-form-field disabled>
                     <input id="output"
                            type="text"

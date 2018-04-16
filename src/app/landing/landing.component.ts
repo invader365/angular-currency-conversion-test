@@ -11,8 +11,8 @@ import 'rxjs/add/operator/map';
   providers: [ ]
 })
 export class LandingComponent implements OnInit {
-  public result;
-  isLoading: boolean = true;
+  public result:number = 0;
+  public isLoading:boolean = true;
 
   public form: FormGroup;
 
@@ -24,13 +24,14 @@ export class LandingComponent implements OnInit {
   ngOnInit() {
     this.getConfig();
     this.createForm();
-    setInterval(this.updateForm, 60*1000);
+    this.updateForm();
+    setInterval(this.updateForm(), 60*100);
   }
 
   createForm() {
     this.form = this.formBuilder.group({
-        input: '',
-        output: [{value:'', disabled:true}]
+        input: ['1', Validators.maxLength(4)],
+        output: [{value:'1', disabled:true}]
     });
   }
 
@@ -62,24 +63,32 @@ export class LandingComponent implements OnInit {
     this.form.patchValue({
       output: Math.round(value * 10000) / 10000
     });
+    console.log(this.form.get('input'));
   }
 
   formatNumbers(number) {
-    let str = number.toString().split('.');
+    if (number != "") {
+      let str = number.toString().split('.');
 
-    str[0] = str[0]
-      .replace(/[^0-9\.]+/g, '')
-      .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+        str[0] = str[0]
+          .replace(/[^0-9\.]+/g, '')
+          .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+        if (str[1] && str[1].lenght > 3) str[1] = str[1].slice(0, 4);
 
-    return str.join('.');
+        return str.join('.');
+    } else {
+        return '';
+    }
   }
 
+  limitCharacters(event, value) {
+      event = (event) ? event : window.event;
+      let charCode = (event.which) ? event.which : event.keyCode;
+      let number = value.split('.');
 
-  limitCharacters(event) {
-    event = (event) ? event : window.event;
-    let charCode = (event.which) ? event.which : event.keyCode;
-
-    if (charCode > 31 && (charCode < 46 || charCode > 57))  event.preventDefault();
+      if (charCode > 31 && (charCode < 46 || charCode > 57)) event.preventDefault();
+      if (number.length > 1 && charCode == 46) event.preventDefault();
+      // if (number[1] && number[1].length > 3) return false;
   }
 
 }

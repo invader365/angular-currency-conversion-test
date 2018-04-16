@@ -24,7 +24,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
   declarations: [
     LandingComponent,
   ],
-  exports: [MatInputModule],
+  exports: [MatIconModule, MatInputModule],
   bootstrap: [LandingComponent],
 })
 export class LandingModule {
