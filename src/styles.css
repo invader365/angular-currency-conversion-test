@@ -1,1 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+body {
+  background-color: #f1f0ee;
+}
+
+h1, a {
+  color: darkcyan;
+}
+
+a:hover {
+  color: cadetblue;
+  text-decoration: none;
+}
+
+header {
+  background-image: linear-gradient(#ccc, #f1f0ee, #f1f0ee);
+}
+
+footer,
+footer a {
+  color: #888;
+}

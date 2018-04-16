@@ -1,0 +1,8 @@
+{
+  "__deprecation_message__":"This API endpoint is deprecated and will stop working on June 1st, 2018. For more information please visit: https://github.com/fixerAPI/fixer#readme",
+  "base":"USD",
+  "date":"2018-04-13",
+  "rates":{
+    "EUR":0.81189
+  }
+}

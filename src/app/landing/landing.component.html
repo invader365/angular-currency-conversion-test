@@ -1,0 +1,145 @@
+<header class="">
+    <div class="container logo text-center">
+
+        <img width="80" alt="Main Logo"
+             src="assets/main_logo.png">
+      <h1>MoneyXchange</h1>
+    </div>
+</header>
+
+<nav class="">
+    <div class="container">
+        <ul class="nav justify-content-center">
+            <li class="nav-item">
+                <h2><a target="_blank" rel="noopener" href="#">About Us</a></h2>
+            </li>
+            <li class="nav-item">
+                <h2><a target="_blank" rel="noopener" href="#">Services</a></h2>
+            </li>
+            <li class="nav-item">
+                <h2><a target="_blank" rel="noopener" href="#">Our Team</a></h2>
+            </li>
+            <li class="nav-item">
+                <h2><a target="_blank" rel="noopener" href="#">Contact</a></h2>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<main>
+    <div class="container">
+        <form [formGroup]="form">
+            <div class="row">
+                <div class="input-field col-md-6">
+                  <mat-form-field>
+                    <input id="input"
+                           type="text"
+                           (input)="updateForm()"
+                           (keypress)="limitCharacters($event)"
+                           placeholder="USD"
+                           [value]="formatNumbers(input.value)"
+                           formControlName="input"
+                           matInput
+                           #input>
+                  </mat-form-field>
+                  <mat-error *ngIf="form.hasError('required')">
+                    Please validate your data <strong>required</strong>
+                  </mat-error>
+                </div>
+
+                <div class="input-field col-md-6 text-right">
+                  <mat-form-field disabled>
+                    <input id="output"
+                           type="text"
+                           placeholder="EU"
+                           [value]="formatNumbers(output.value)"
+                           formControlName="output"
+                           matInput
+                           #output>
+                  </mat-form-field>
+                </div>
+            </div>
+        </form>
+
+        <div class="text-center">
+          <button (click)="updateForm()"
+              class="btn btn-primary"
+              type="submit">
+              Calculate
+          </button>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="footer_title">
+                    <h4>Sitemap</h4>
+                </div>
+                <ul class="list-unstyled">
+                    <li>
+                        <a target="_blank" rel="noopener" href="#">About Us</a>
+                    </li>
+                    <li>
+                        <a target="_blank" rel="noopener" href="#">Services</a>
+                    </li>
+                    <li>
+                        <a target="_blank" rel="noopener" href="#">Our Team</a>
+                    </li>
+                    <li>
+                        <a target="_blank" rel="noopener" href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-md-3">
+                <div class="footer_title">
+                    <h4>Services</h4>
+                </div>
+                <ul class="list-unstyled">
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Our Team</a></li>
+                    <li><a href="#">Portfolio</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3">
+                <div class="footer_title">
+                    <h4>Others</h4>
+                </div>
+                <ul class="list-unstyled">
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Our Team</a></li>
+                    <li><a href="#">Portfolio</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3">
+                <div class="footer_title">
+                    <h4>Social</h4>
+                </div>
+                <ul class="list-unstyled d-inline-flex social">
+                    <li class="win">
+                        <a href="#">
+                            <img width="35" alt="Angular Logo" src="assets/ico-win.png">
+                        </a>
+                    </li>
+                    <li class="android">
+                        <a href="#">
+                            <img width="35" alt="Angular Logo" src="assets/ico-android.png">
+                        </a>
+                    </li>
+                    <li class="linux">
+                        <a href="#">
+                            <img width="35" alt="Angular Logo" src="assets/ico-linux.png">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
